@@ -1,0 +1,143 @@
+@use '../abstracts' as *;
+
+:root {
+    --url: url('../../images/icon-bookmark.svg');
+
+}
+
+.btn--menu {
+    border: 0;
+    background: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 200;
+
+    &:hover {
+        transform: rotate(180deg);
+    }
+
+}
+
+.btn {
+    cursor: pointer;
+    padding: 1em 2.8em;
+    border-radius: 100vw;
+    border: 0;
+    color: #fff;
+    font-weight: 700;
+    background-color: $color-cyan;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: $color-cyan-dark;
+    }
+}
+
+.btn--back:hover {
+    background-color: $color-cyan-dark;
+}
+
+.btn--bookmark {
+    width: 56px;
+    padding: 0;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.btn--bookmark--expanded {
+    display: none;
+}
+
+.btn--select {
+    width: fit-content;
+    padding: 1em 2.4em;
+
+    &:hover {
+        background-color: $color-cyan-dark;
+
+    }
+}
+
+.btn--outofstock {
+    width: fit-content;
+    padding: 1em 2.7em;
+    background-color: $color-dark-gray;
+    cursor: not-allowed;
+}
+
+@media(max-width: 365px) {
+    .btn {
+        padding: 1em 1.2em;
+
+    }
+
+    .btn--bookmark {
+        padding: 0;
+    }
+}
+
+@media(min-width: 830px) {
+    .btn--menu {
+        display: none;
+    }
+
+    .btn--bookmark {
+        display: none;
+    }
+
+    .btn--bookmark--expanded {
+        transition: all 200ms ease;
+        position: relative;
+        display: block;
+        background-color: $color-gray;
+        color: $color-dark-gray;
+        padding-left: 4.5em;
+        padding-right: 2em;
+
+        &:hover {
+            opacity: 0.8;
+            background-color: $color-gray;
+
+        }
+    }
+
+    .btn--bookmark--expanded[aria-checked=true] {
+        color: $color-cyan-dark;
+    }
+
+    .btn--bookmark--expanded::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 56px;
+        aspect-ratio: 1/1;
+        background-image: var(--url);
+        background-repeat: no-repeat;
+        background-size: contain;
+        border-top-right-radius: 100vw;
+        border-bottom-right-radius: 100vw;
+    }
+
+    .btn--submit {
+        margin-left: 1rem;
+    }
+}
+
+.btn--submit {
+    padding: 1em 2em;
+
+    &:hover {
+        background-color: $color-cyan-dark;
+
+
+    }
+}
+
+.modal-close {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}

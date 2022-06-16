@@ -1,0 +1,135 @@
+@use '../abstracts' as *;
+
+.container--header {
+    max-width: 88%;
+    margin-inline: auto;
+    padding-top: 1.6em;
+
+    &__logobtn {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.header {
+    min-height: 35vh;
+    background-image: url('../../images/image-hero-mobile.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.dim {
+    content: '';
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+    opacity: 1;
+    z-index: 10;
+    visibility: visible;
+    position: fixed;
+}
+
+@media (max-width:830px) {
+    .nav {
+        position: relative;
+        transform: translateX(150%);
+        animation: slideUp 400ms ease-in-out forwards;
+        z-index: 100;
+
+        &[data-visible=true] {
+            animation: slideDown 400ms ease-in-out forwards;
+        }
+
+        &__list {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1em 0;
+            margin-top: 2rem;
+            font-size: 1.16rem;
+            font-weight: 500;
+            color: $color-black;
+            width: 100%;
+            position: absolute;
+        }
+
+        &__item {
+            padding: 0 1em;
+
+            &+.nav__item {
+                margin-top: 1.4rem;
+            }
+
+            &:nth-child(1) {
+                padding-bottom: 1em;
+                border-bottom: 2px solid $color-gray;
+            }
+
+            &:nth-child(2) {
+                padding-bottom: 1em;
+                border-bottom: 2px solid $color-gray;
+            }
+        }
+    }
+
+    @keyframes slideDown {
+        0% {
+            opacity: 0;
+            transform: translateY(-60px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slideUp {
+        0% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        100% {
+            opacity: 0;
+            transform: translateY(-300px);
+        }
+    }
+}
+
+
+
+
+
+@media(min-width: 830px) {
+    .container--header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    .nav {
+        &__list {
+            display: flex;
+            flex-direction: row;
+            margin: 0;
+
+        }
+
+        &__item {
+            color: #fff;
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+
+        &__item+&__item {
+            margin-left: 2.4rem;
+
+        }
+    }
+}

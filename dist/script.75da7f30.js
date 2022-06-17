@@ -215,13 +215,13 @@ modalClose.addEventListener('click', function () {
 gotItBtn.addEventListener('click', function () {
   return modalThanks.close();
 }); //show/hide modals//
-//append total backers in form submit//
+//append total backers on first form submit//
 
 submitBtns[0].addEventListener('click', function () {
   modal.close();
   modalThanks.showModal();
   incrementTotalBackers();
-}); //append total backers in form submit//
+}); //append total backers on first form submit//
 
 var _loop = function _loop(i, j) {
   submitBtns[j].addEventListener('click', function () {
@@ -287,9 +287,15 @@ function incrementTotalBacked() {
       e.preventDefault();
       var totalBackedNum = +totalBacked.innerText;
       var resultNum = totalBackedNum += +inputs[_j3].value;
-      totalBacked.innerText = "".concat(resultNum);
-      moveProgressBar();
-      localStorage.setItem('backed', resultNum);
+
+      if (totalBackedNum <= 100000) {
+        totalBacked.innerText = "".concat(resultNum);
+        moveProgressBar();
+        localStorage.setItem('backed', resultNum);
+      } else {
+        totalBacked.innerText = "".concat(100000);
+        localStorage.setItem('backed', 100000);
+      }
     });
   };
 
@@ -388,7 +394,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51561" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50936" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

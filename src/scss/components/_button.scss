@@ -65,6 +65,10 @@
     padding: 1em 2.7em;
     background-color: $color-dark-gray;
     cursor: not-allowed;
+
+    &:hover {
+        background-color: $color-dark-gray;
+    }
 }
 
 @media(max-width: 365px) {

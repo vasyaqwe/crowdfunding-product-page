@@ -99,13 +99,13 @@ gotItBtn.addEventListener('click', () => modalThanks.close());
 //show/hide modals//
 
 
-//append total backers in form submit//
+//append total backers on first form submit//
 submitBtns[0].addEventListener('click', () => {
     modal.close();
     modalThanks.showModal();
     incrementTotalBackers();
 });
-//append total backers in form submit//
+//append total backers on first form submit//
 
 for (let i = 0, j = 1; i < inputs.length, j < submitBtns.length; i++, j++) {
     submitBtns[j].addEventListener('click', () => {
@@ -155,12 +155,16 @@ function incrementTotalBacked() {
     for (let i = 1, j = 0; i < forms.length, j < inputs.length; i++, j++) {
         forms[i].addEventListener('submit', (e) => {
             e.preventDefault();
-
             let totalBackedNum = +totalBacked.innerText;
             const resultNum = totalBackedNum += +inputs[j].value;
-            totalBacked.innerText = `${resultNum}`;
-            moveProgressBar();
-            localStorage.setItem('backed', resultNum);
+            if (totalBackedNum <= 100000) {
+                totalBacked.innerText = `${resultNum}`;
+                moveProgressBar();
+                localStorage.setItem('backed', resultNum);
+            } else {
+                totalBacked.innerText = `${100000}`;
+                localStorage.setItem('backed', 100000);
+            }
         })
     }
 }

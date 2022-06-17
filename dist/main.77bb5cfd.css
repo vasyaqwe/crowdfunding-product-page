@@ -143,6 +143,9 @@ body {
   background-color: rgb(122, 122, 122);
   cursor: not-allowed;
 }
+.btn--outofstock:hover {
+  background-color: rgb(122, 122, 122);
+}
 
 @media (max-width: 365px) {
   .btn {

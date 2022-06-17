@@ -164,6 +164,7 @@ function incrementTotalBacked() {
             } else {
                 totalBacked.innerText = `${100000}`;
                 localStorage.setItem('backed', 100000);
+                moveProgressBar();
             }
         })
     }
